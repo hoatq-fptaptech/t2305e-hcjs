@@ -1,0 +1,15 @@
+.box{
+    width: calc(25% - 20px);
+    /* height: 400px; */
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    /*
+    padding-left:10px;
+    */
+    border: 1px solid red;
+}
+img{
+    max-width: 100%;
+}
