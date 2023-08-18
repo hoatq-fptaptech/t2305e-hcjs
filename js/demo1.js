@@ -30,3 +30,15 @@ var s = setInterval(function(){
         clearInterval(s);
     }
 },1000);
+
+var dg = 0;
+function fan(){
+    setInterval(function(){
+        var bar = document.getElementById("bar");
+        bar.style.transform = `rotate(${dg}deg)`;
+        dg+=10;
+        if(dg==360)
+            dg=0;
+    },1);
+}
+
