@@ -32,13 +32,37 @@ var s = setInterval(function(){
 },1000);
 
 var dg = 0;
+var fanVN;
+var speed = 0;
 function fan(){
-    setInterval(function(){
+    if(fanVN != null){
+        return;
+    }
+    fanVN = setInterval(function(){
         var bar = document.getElementById("bar");
         bar.style.transform = `rotate(${dg}deg)`;
-        dg+=10;
+        dg+=speed;
         if(dg==360)
             dg=0;
     },1);
 }
-
+function lv1(){
+    speed = 5;
+    fan();
+}
+function lv2(){
+    speed = 10;
+    fan();
+}
+function lv3(){
+    speed= 20;
+    fan();
+}
+function turnOff(){
+    if(fanVN != null)
+        clearInterval(fanVN);
+        fanVN = null;
+        dg= 0;
+        var bar = document.getElementById("bar");
+        bar.style.transform = `rotate(${dg}deg)`;
+}
