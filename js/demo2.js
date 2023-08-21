@@ -1,25 +1,23 @@
-function getData(){
-    fetch("https://dummyjson.com/products/1")
-    .then(data=>data.json())
-    .then(function(data){
-        //data = JSON.parse(data);   
-        var ct = document.getElementById("p-title");
-        ct.innerText = data.title;
-        var pthumb = document.getElementById("p-thumb");
-        pthumb.src = data.thumbnail;
-        var pdesc = document.getElementById("p-desc");
-        pdesc.innerText = data.description;
+async function getData(x){
+    var data = await fetch(`https://dummyjson.com/products/${x}`)
+    data = await data.json();   
+    var ct = document.getElementById("p-title");
+    ct.innerText = data.title;
+    var pthumb = document.getElementById("p-thumb");
+    pthumb.src = data.thumbnail;
+    var pdesc = document.getElementById("p-desc");
+    pdesc.innerText = data.description;
 
-        var pimgs = document.getElementById("p-imgs");
-        // for(var i=0;i<data.images.length;i++){
-        //     var li_item = `<li><img width="80" src="${data.images[i]}" /></li>`;
-        //     pimgs.innerHTML += li_item;
-        // }
-        data.images.forEach(e => {
-            var li_item = `<li><img width="80" src="${e}" /></li>`;
-            pimgs.innerHTML += li_item;
-        });
+    var pimgs = document.getElementById("p-imgs");
+    // for(var i=0;i<data.images.length;i++){
+    //     var li_item = `<li><img width="80" src="${data.images[i]}" /></li>`;
+    //     pimgs.innerHTML += li_item;
+    // }
+    data.images.forEach(e => {
+        var li_item = `<li><img width="80" src="${e}" /></li>`;
+        pimgs.innerHTML += li_item;
     });
+
     
 }
-getData();
+getData(6);
